@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "dom-to-image": "^2.6.0",
+    "face-api.js": "^0.22.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
