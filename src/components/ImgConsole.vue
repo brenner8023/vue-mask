@@ -13,7 +13,11 @@
       <div class="btn reupload" role="button" @click="handleReuploadClick">
         重新上传
       </div>
-      <div class="btn g-avatar" role="button" @click="handleNewAvatarClick">
+      <div
+        class="btn draw-avatar-btn"
+        role="button"
+        @click="handleNewAvatarClick"
+      >
         生成新头像
       </div>
     </div>
@@ -33,7 +37,7 @@ import glasses2 from "@/assets/img/glasses-2.png";
 import clothes from "@/assets/img/clothes.png";
 
 export default {
-  name: "ImgEdit",
+  name: "ImgConsole",
   data() {
     return {
       // 存储口罩护目镜防护服图片的信息
@@ -81,6 +85,11 @@ export default {
       ]
     };
   },
+  created() {
+    this.$bus.$on("draw-success", () => {
+      this.$bus.$emit("show-toast", "合成成功,长按图片即可保存");
+    });
+  },
   methods: {
     // 通知父组件点击了重新上传按钮
     handleReuploadClick() {
@@ -88,8 +97,9 @@ export default {
     },
     // 点击物品图片进行选择
     handleSelectClick(idx) {
-      this.$bus.$emit("add-image", this.$data.listOfThings[idx].imgUrl);
+      this.$bus.$emit("add-mask", this.$data.listOfThings[idx].imgUrl);
     },
+    // 点击生成新头像
     handleNewAvatarClick() {
       this.$bus.$emit("draw-avatar");
     }
@@ -129,7 +139,7 @@ export default {
   color: #fff;
 }
 
-.g-avatar {
+.draw-avatar-btn {
   background: rgb(255, 228, 17);
 }
 </style>

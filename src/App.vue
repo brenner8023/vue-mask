@@ -1,33 +1,40 @@
 <template>
   <div id="app">
+    <Toast v-if="isShowToast">{{ toastMessage }}</Toast>
     <ImgShow />
-    <ImgEdit />
+    <ImgConsole />
   </div>
 </template>
 
 <script>
 import ImgShow from "./components/ImgShow.vue";
-import ImgEdit from "./components/ImgEdit.vue";
+import ImgConsole from "./components/ImgConsole.vue";
+import Toast from "./components/Toast";
 import * as faceapi from "face-api.js";
 
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      isShowToast: false,
+      toastMessage: ""
+    };
   },
   components: {
-    ImgEdit,
-    ImgShow
+    ImgConsole,
+    ImgShow,
+    Toast
   },
   created() {
     // this.init();
-    document.body.addEventListener(
-      "touchmove",
-      function(e) {
-        e.preventDefault(); // 阻止默认的处理方式(阻止下拉滑动的效果)
-      },
-      { passive: false }
-    ); // passive 参数不能省略，用来兼容ios和android
+    this.$bus.$on("show-toast", message => {
+      this.$data.toastMessage = message;
+      this.$data.isShowToast = true;
+      let timer = setTimeout(() => {
+        this.$data.isShowToast = false;
+        clearTimeout(timer);
+      }, 1500);
+    });
   },
   methods: {
     async init() {
