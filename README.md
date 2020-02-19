@@ -1,10 +1,10 @@
 # vue-mask
-使用vue2写的H5口罩头像生成器
+使用vue2实现的H5端口罩头像生成器，可以将微信头像、QQ头像等等替换成戴口罩、护目镜的合成头像
 
-h5访问：
+手机端体验地址：
 https://brenner8023.gitee.io/vue-mask/
 
-食用
+食用代码：
 ```shell
 # project setup
 npm i
@@ -17,8 +17,12 @@ npm run build
 ```
 
 应用截图：
-<div style="display: flex;">
-  <img width="33%" src="https://brenner8023.gitee.io/img-bed/vue-mask/722837240.jpg" alt="">
-  <img width="33%" src="https://brenner8023.gitee.io/img-bed/vue-mask/1146796843.jpg" alt="">
-  <img width="33%" src="https://brenner8023.gitee.io/img-bed/vue-mask/2043580901.jpg" alt="">
-</div>
+<table>
+  <tr>
+    <td><img src="https://brenner8023.gitee.io/img-bed/vue-mask/mask1.jpg" alt=""></td>
+    <td><img src="https://brenner8023.gitee.io/img-bed/vue-mask/mask2.jpg" alt=""></td>
+  </tr>
+  <tr>
+    <td><img src="https://brenner8023.gitee.io/img-bed/vue-mask/mask3.jpg" alt=""></td>
+  </tr>
+</table>
